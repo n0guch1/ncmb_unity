@@ -26,11 +26,10 @@ cat $log_file
 test_result_file=$(pwd)/TravisScripts/test_runner_result.xml
 echo "* Execute Test Runner"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
--batchmode \
 -runTests \
 -projectPath "$project_path" \
 -testResults "$test_result_file" \
--testPlatform editmode
+-testPlatform playmode
 
 echo '* Test Runner result'
 cat $test_result_file 
