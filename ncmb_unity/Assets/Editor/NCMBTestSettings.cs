@@ -40,7 +40,7 @@ public class NCMBTestSettings
 
 		NCMBUser.LogOutAsync ();
 
-        MockServer.startMock();
+        //MockServer.startMock();
 	}
 
 	// 非同期のコールバックが実行されるまで待機
