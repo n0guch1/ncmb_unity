@@ -58,10 +58,11 @@ public class NCMBTestSettings
 		Debug.Log ("確認3");
 		float elapsedTime = 0.0f;
 		while (NCMBTestSettings.CallbackFlag == false) {
-			Debug.Log ("確認4");
+			Debug.Log ("確認4:" + elapsedTime);
 			elapsedTime += Time.deltaTime;
 			if (elapsedTime >= REQUEST_TIME_OUT) { 
-				break;
+				Debug.Log ("確認　Break！！");
+				yield break;
 			}
 			//yield return new WaitForEndOfFrame ();
 			yield return new WaitForSeconds (0.5f); 
