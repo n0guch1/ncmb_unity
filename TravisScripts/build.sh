@@ -24,15 +24,18 @@ echo "* Unity build log"
 cat $log_file 
 
 test_result_file=$(pwd)/TravisScripts/test_runner_result.xml
+
+echo "確認"
+cat $project_path
+cat $test_result_file
+echo "確認"
+
 echo "* Execute Test Runner"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
--batchmode \
--nographics \
 -runTests \
 -projectPath "$project_path" \
 -testResults "$test_result_file" \
--testPlatform editmode
--quit
+-testPlatform playmode
 
 echo '* Test Runner result'
 cat $test_result_file 
