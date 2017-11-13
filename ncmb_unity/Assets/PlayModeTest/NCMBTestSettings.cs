@@ -9,8 +9,8 @@ public class NCMBTestSettings
 {
 	public static readonly string APP_KEY = "d55786e0bd4263018ca04ac9af7cbad153d757879d8cd296a9c3075a482ad845";
 	public static readonly string CLIENT_KEY = "ba82f3ca775edf2c39b53bc7ecaa40eb2a7dd35f4724f489b067ec93895e21de";
-	//public static readonly string DOMAIN_URL = "http://localhost:3000";
-	public static readonly string DOMAIN_URL = "";
+	public static readonly string DOMAIN_URL = "http://localhost:3000";
+	//public static readonly string DOMAIN_URL = "";
 	public static readonly string API_VERSION = "2013-09-01";
 	private static bool _callbackFlag = false;
 
@@ -49,7 +49,7 @@ public class NCMBTestSettings
 
 		NCMBUser.LogOutAsync ();
 
-		//MockServer.startMock ();
+		MockServer.startMock ();
 	}
 
 	public static IEnumerator AwaitAsync ()
