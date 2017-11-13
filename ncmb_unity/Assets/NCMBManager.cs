@@ -202,7 +202,9 @@ namespace NCMB
 
 		public void Connection (NCMBConnection connection, object callback)
 		{
+			Debug.Log ("SDK 確認１");
 			StartCoroutine (NCMBConnection.SendRequest (connection, connection._request, callback));
+			Debug.Log ("SDK 確認７");
 		}
 
 		internal static string SearchPath ()
