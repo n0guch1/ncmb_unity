@@ -17,19 +17,22 @@ public class NCMBObjectTest
 	[UnityTest]
 	public IEnumerator DoubleQuotationUnescapeTest ()
 	{
+		Debug.Log ("確認1");
 		// テストデータ作成
 		NCMBObject obj = new NCMBObject ("TestClass");
 		obj ["key"] = "\"test\"";
 		obj.SaveAsync ((NCMBException e) => {
+			Debug.Log ("確認6");
 			if (e != null) {
 				Assert.Fail (e.ErrorMessage);
 			}
 			NCMBTestSettings.CallbackFlag = true;
 		});
 	
+		Debug.Log ("確認2");
 		yield return NCMBTestSettings.AwaitAsync ();
 		NCMBTestSettings.CallbackFlag = false;
-	
+		Debug.Log ("確認7");
 		// テストデータ検索
 		NCMBQuery<NCMBObject> query = new NCMBQuery<NCMBObject> ("TestClass");
 		query.WhereEqualTo ("objectId", obj.ObjectId);

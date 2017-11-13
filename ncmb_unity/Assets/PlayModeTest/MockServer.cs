@@ -33,9 +33,7 @@ public class MockServer
 	public static void startMock ()
 	{
 		if (instance == null) {
-			Debug.Log ("確認1");
 			instance = new MockServer ();
-			Debug.Log ("確認2");
 			instance.ReadMockData ();
 		}
 	}
