@@ -59,7 +59,7 @@ public class NCMBTestSettings
 		float elapsedTime = 0.0f;
 		while (NCMBTestSettings.CallbackFlag == false) {
 			Debug.Log ("確認4:" + elapsedTime);
-			elapsedTime += Time.deltaTime;
+			elapsedTime += 0.5f;
 			if (elapsedTime >= REQUEST_TIME_OUT) { 
 				Debug.Log ("確認　Break！！");
 				yield break;
