@@ -25,17 +25,20 @@ cat $log_file
 
 test_result_file=$(pwd)/TravisScripts/test_runner_result.xml
 
-echo "確認"
+echo "確認1"
 cat $project_path
+echo "確認2"
 cat $test_result_file
-echo "確認"
+echo "確認3"
 
 echo "* Execute Test Runner"
 /Applications/Unity/Unity.app/Contents/MacOS/Unity \
+-batchmode \
+-nographics \
 -runTests \
 -projectPath "$project_path" \
 -testResults "$test_result_file" \
--testPlatform editmode
+-testPlatform playmode
 
 echo '* Test Runner result'
 cat $test_result_file 
