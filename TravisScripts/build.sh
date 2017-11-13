@@ -35,7 +35,7 @@ echo "* Execute Test Runner"
 -runTests \
 -projectPath "$project_path" \
 -testResults "$test_result_file" \
--testPlatform playmode
+-testPlatform editmode
 
 echo '* Test Runner result'
 cat $test_result_file 
