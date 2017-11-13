@@ -5,7 +5,6 @@ before_install:
 install:
  - ./TravisScripts/install.sh
 before_script:
-  - travis_wait 60 make build
   - chmod +x ./TravisScripts/build.sh
   - chmod +rw ./TravisScripts/unity_build.log
   - chmod +rw ./TravisScripts/test_runner_result.xml
