@@ -407,8 +407,8 @@ namespace NCMB.Internal
 					error = new NCMBException ();
 					break;
 				}
-				yield return new WaitForEndOfFrame ();
-				//yield return new WaitForSeconds (0.5f);
+				//yield return new WaitForEndOfFrame ();
+				yield return new WaitForSeconds (0.5f);
 			}
 
 			// 通信結果判定
