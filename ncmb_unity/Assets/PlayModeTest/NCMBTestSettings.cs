@@ -57,7 +57,8 @@ public class NCMBTestSettings
 		Debug.Log ("確認3");
 		while (NCMBTestSettings.CallbackFlag == false) {
 			Debug.Log ("確認4");
-			yield return new WaitForEndOfFrame ();
+			//yield return new WaitForEndOfFrame ();
+			yield return new WaitForSeconds (0.5f); 
 		}
 		Debug.Log ("確認5");
 		yield break;
