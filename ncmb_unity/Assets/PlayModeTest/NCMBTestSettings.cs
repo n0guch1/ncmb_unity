@@ -13,6 +13,7 @@ public class NCMBTestSettings
 	//public static readonly string DOMAIN_URL = "";
 	public static readonly string API_VERSION = "2013-09-01";
 	private static bool _callbackFlag = false;
+	private static readonly int REQUEST_TIME_OUT = 10;
 
 	public static bool CallbackFlag {
 		get {
@@ -55,8 +56,13 @@ public class NCMBTestSettings
 	public static IEnumerator AwaitAsync ()
 	{
 		Debug.Log ("確認3");
+		float elapsedTime = 0.0f;
 		while (NCMBTestSettings.CallbackFlag == false) {
 			Debug.Log ("確認4");
+			elapsedTime += Time.deltaTime;
+			if (elapsedTime >= REQUEST_TIME_OUT) { 
+				break;
+			}
 			//yield return new WaitForEndOfFrame ();
 			yield return new WaitForSeconds (0.5f); 
 		}
