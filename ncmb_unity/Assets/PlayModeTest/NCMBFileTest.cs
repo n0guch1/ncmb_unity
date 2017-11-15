@@ -89,7 +89,7 @@ public class NCMBFileTest
 	[UnityTest]
 	public IEnumerator FileUploadImageTest ()
 	{
-		FileStream fileStream = new FileStream ("Assets/Editor/logo.png", FileMode.Open, FileAccess.Read);
+		FileStream fileStream = new FileStream ("Assets/PlayModeTest/logo.png", FileMode.Open, FileAccess.Read);
 		BinaryReader bin = new BinaryReader (fileStream);
 		byte[] data = bin.ReadBytes ((int)bin.BaseStream.Length);
 		bin.Close ();
