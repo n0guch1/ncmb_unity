@@ -397,6 +397,7 @@ namespace NCMB.Internal
 
 			// 通信実行
 			req.Send ();
+
 			// タイムアウト処理
 			float elapsedTime = 0.0f;
 			while (!req.isDone) {

@@ -56,12 +56,13 @@ public class NCMBObjectTest
 	[Test]
 	public void GetBaseUrlTest ()
 	{
-		Assert.AreEqual (true, true);
-//		// テストデータ作成
-//		NCMBObject obj = new NCMBObject ("TestClass");
-//		// internal methodの呼び出し
-//		MethodInfo method = obj.GetType ().GetMethod ("_getBaseUrl", BindingFlags.NonPublic | BindingFlags.Instance);
-//		Assert.AreEqual ("http://localhost:3000/2013-09-01/classes/TestClass", method.Invoke (obj, null).ToString ());
+		// テストデータ作成
+		NCMBObject obj = new NCMBObject ("TestClass");
+		// internal methodの呼び出し
+		MethodInfo method = obj.GetType ().GetMethod ("_getBaseUrl", BindingFlags.NonPublic | BindingFlags.Instance);
+		Assert.AreEqual ("http://localhost:3000/2013-09-01/classes/TestClass", method.Invoke (obj, null).ToString ());
 	}
+
+
 
 }
