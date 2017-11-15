@@ -25,13 +25,18 @@ public class NCMBTestSettings
 	// 初期化
 	public static void Initialize ()
 	{
-		GameObject manager = new GameObject ();
-		manager.name = "NCMBManager";
-		manager.AddComponent<NCMBManager> ();
+		
+		if (GameObject.Find ("NCMBManager") == null) {
+			GameObject manager = new GameObject ();
+			manager.name = "NCMBManager";
+			manager.AddComponent<NCMBManager> ();
+		}
 
-		GameObject settings = new GameObject ();
-		settings.name = "NCMBSettings";
-		settings.AddComponent<NCMBSettings> ();
+		if (GameObject.Find ("NCMBSettings") == null) {
+			GameObject settings = new GameObject ();
+			settings.name = "NCMBSettings";
+			settings.AddComponent<NCMBSettings> ();
+		}
 
 		NCMBSettings.Initialize (
 			APP_KEY,
@@ -41,10 +46,12 @@ public class NCMBTestSettings
 		);
 		CallbackFlag = false;
 
-		GameObject o = new GameObject ("settings");
-		System.Object obj = o.AddComponent<NCMBSettings> ();
-		FieldInfo field = obj.GetType ().GetField ("filePath", BindingFlags.Static | BindingFlags.NonPublic);
-		field.SetValue (obj, Application.persistentDataPath);
+		if (GameObject.Find ("settings") == null) {
+			GameObject o = new GameObject ("settings");
+			System.Object obj = o.AddComponent<NCMBSettings> ();
+			FieldInfo field = obj.GetType ().GetField ("filePath", BindingFlags.Static | BindingFlags.NonPublic);
+			field.SetValue (obj, Application.persistentDataPath);
+		}
 
 		NCMBUser.LogOutAsync ();
 
