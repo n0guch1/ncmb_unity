@@ -395,33 +395,31 @@ namespace NCMB.Internal
 			// 通信実行
 			// yield return req.Send ();
 
-			Debug.Log ("SDK 確認２");
 			// 通信実行
 			req.Send ();
 			// タイムアウト処理
 			float elapsedTime = 0.0f;
 			while (!req.isDone) {
 				elapsedTime += Time.deltaTime;
-				Debug.Log ("SDK 確認３：" + elapsedTime);
 				if (elapsedTime >= REQUEST_TIME_OUT) { 
-					//if (elapsedTime >= 0.01f) { 
 					req.Abort ();
 					error = new NCMBException ();
-					Debug.Log ("SDK 確認４");
 					break;
 				}
 				//yield return new WaitForEndOfFrame ();
-				Debug.Log ("SDK 確認５");
-				yield return new WaitForSeconds (0.5f);
+				yield return new WaitForSeconds (0.2f);
 			}
-
-			Debug.Log ("SDK 確認６");
+				
 			// 通信結果判定
 			if (error != null) {
 				// タイムアウト
 				error.ErrorCode = "408";
 				error.ErrorMessage = "Request Timeout.";
+				#if UNITY_5
+			} else if (req.isError) {
+				#else 
 			} else if (req.isNetworkError) {
+				#endif
 				// 通信エラー
 				error = new NCMBException ();
 				error.ErrorCode = req.responseCode.ToString ();
