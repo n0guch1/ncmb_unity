@@ -61,8 +61,6 @@ namespace NCMB.Internal
 		//アプリケションキー　キー
 		private static readonly string HEADER_TIMESTAMP_KEY = "X-NCMB-Timestamp";
 		//タイムスタンプ　キー
-		private static readonly string HEADER_ACCESS_CONTROL_ALLOW_ORIGIN = "Access-Control-Allow-Origin";
-		//Access-Control　キー
 		private static readonly string HEADER_SESSION_TOKEN = "X-NCMB-Apps-Session-Token";
 		//セッショントークン
 		private static readonly string HEADER_USER_AGENT_KEY = "X-NCMB-SDK-Version";
@@ -368,20 +366,11 @@ namespace NCMB.Internal
 			if (unescapeResponseData != null && unescapeResponseData != Regex.Unescape (unescapeResponseData)) {
 				unescapeResponseData = Regex.Unescape (unescapeResponseData);
 			}
-
+				
 			//レスポンスシグネチャのチェック
-			if (NCMBSettings._responseValidationFlag && req.error == null && error == null) {
-				//レスポンスシグネチャが無い場合はE100001エラー
-				if (req.GetResponseHeader (RESPONSE_SIGNATURE) != null) {
-					string responseSignature = req.GetResponseHeader (RESPONSE_SIGNATURE).ToString ();
-					_signatureCheck (responseSignature, code, unescapeResponseData, req.downloadHandler.data, ref error);
-				} else {
-					code = "100";
-					responseData = "{}";
-					error = new NCMBException ();
-					error.ErrorCode = "E100001";
-					error.ErrorMessage = "Authentication error by response signature incorrect.";
-				}
+			if (NCMBSettings._responseValidationFlag && req.error == null && error == null && req.GetResponseHeader (RESPONSE_SIGNATURE) != null) {
+				string responseSignature = req.GetResponseHeader (RESPONSE_SIGNATURE).ToString ();
+				_signatureCheck (responseSignature, code, unescapeResponseData, req.downloadHandler.data, ref error);
 			}
 		}
 
