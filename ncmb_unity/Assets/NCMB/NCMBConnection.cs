@@ -396,7 +396,11 @@ namespace NCMB.Internal
 			// yield return req.Send ();
 
 			// 通信実行
+			#if UNITY_5
 			req.Send ();
+			#else
+			req.SendWebRequest ();
+			#endif
 
 			// タイムアウト処理
 			float elapsedTime = 0.0f;
@@ -410,7 +414,7 @@ namespace NCMB.Internal
 				//yield return new WaitForEndOfFrame ();
 				yield return new WaitForSeconds (0.2f);
 			}
-				
+
 			// 通信結果判定
 			if (error != null) {
 				// タイムアウト
