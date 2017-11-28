@@ -22,9 +22,7 @@ using MiniJSON;
 using NCMB.Internal;
 using System.Linq;
 using System.Text;
-
 using UnityEngine;
-using System.Collections;
 
 namespace NCMB
 {
